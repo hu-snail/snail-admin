@@ -1,0 +1,19 @@
+{
+  "name": "snail-admin",
+  "version": "1.0.0",
+  "description": "vue3中后台解决方案",
+  "type": "module",
+  "main": "index.js",
+  "author": "hu-snail <1217437592@qq.com>",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue3",
+    "admin",
+    "snail-admin",
+    "vue-admin-template",
+    "snail"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,11 @@
+.gitignorenode_modules
+
+.idea
+.vscode
+.history
+*.log
+.DS_Store
+package-lock.json
+
+
+packages/*/lib

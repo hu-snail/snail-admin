@@ -1,0 +1,16 @@
+{
+  "name": "@snail-admin/vite-plugins",
+  "version": "1.0.0",
+  "description": "vite-plugins of snail-admin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "template",
+    "admin-template",
+    "snail-admin"
+  ],
+  "author": "hu-snail <1217437592@qq.com>",
+  "license": "MIT"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "@snail-admin/login",
+  "version": "1.0.0",
+  "description": "login of snail-admin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "login-template",
+    "admin-login",
+    "snail-admin"
+  ],
+  "author": "hu-snail <1217437592@qq.com>",
+  "license": "MIT"
+}
