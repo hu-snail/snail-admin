@@ -1,0 +1,5 @@
+.eslintignorenode_modules
+dist
+pnpm-lock.yaml
+play
+!.*

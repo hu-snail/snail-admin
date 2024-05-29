@@ -6,7 +6,16 @@
   "main": "index.js",
   "author": "hu-snail <1217437592@qq.com>",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec nano-staged --allow-empty --concurrent false",
+    "commit-msg": "npx tsx ./scripts/verify-commit.ts"
+  },
+  "nano-staged": {
+    "*.{ts,tsx,js,vue,scss}": "prettier --write",
+    "*.{ts,tsx,js,vue}": "eslint --fix"
   },
   "keywords": [
     "vue3",
@@ -17,7 +26,13 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@snail-admin/eslint-config": "workspace:*",
     "@types/node": "^20.12.12",
+    "eslint": "8.43.0",
+    "nano-staged": "^0.8.0",
+    "picocolors": "^1.0.1",
+    "prettier": "^3.2.5",
+    "simple-git-hooks": "^2.11.1",
     "typescript": "^5.4.5",
     "vue": "^3.4.27"
   }

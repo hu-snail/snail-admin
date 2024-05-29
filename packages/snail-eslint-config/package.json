@@ -11,5 +11,16 @@
     "snail-admin"
   ],
   "author": "hu-snail <1217437592@qq.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-vue": "^9.15.1"
+  },
+  "peerDependencies": {
+    "eslint": "^8.43.0"
+  }
 }
