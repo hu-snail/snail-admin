@@ -1,0 +1,19 @@
+{
+  "name": "@snail-admin/docs",
+  "version": "1.0.0",
+  "description": "docs of snail-admin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "docs",
+    "snail-docs",
+    "snail-admin"
+  ],
+  "author": "hu-snail <1217437592@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.2.2"
+  }
+}

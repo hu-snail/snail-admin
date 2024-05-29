@@ -1,0 +1,12 @@
+packages/*/lib/**
+packages/*/dist/**
+packages/*/es/**
+packages/*/lib/**
+
+**/package.json
+*.md
+.github/**
+.history/**
+
+pnpm-lock.yaml
+pnpm-workspace.yaml

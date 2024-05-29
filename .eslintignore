@@ -2,4 +2,6 @@
 dist
 pnpm-lock.yaml
 play
-!.*
+.*
+lib/*
+es/*
