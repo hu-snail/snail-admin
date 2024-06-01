@@ -1,4 +1,4 @@
 {
   "root": true,
-  "extends": ["@snail-admin/eslint-config"]
+  "extends": ["@snail-admin/eslint-config", "plugin:oxlint/recommended"]
 }

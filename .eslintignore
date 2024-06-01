@@ -5,3 +5,4 @@ play
 .*
 lib/*
 es/*
+*.md

@@ -7,15 +7,16 @@
   "author": "hu-snail <1217437592@qq.com>",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "simple-git-hooks"
+    "postinstall": "simple-git-hooks",
+    "lint": "npx oxlint && npx eslint"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec nano-staged --allow-empty --concurrent false",
     "commit-msg": "npx tsx ./scripts/verify-commit.ts"
   },
   "nano-staged": {
-    "*.{ts,tsx,js,vue,scss}": "prettier --write",
-    "*.{ts,tsx,js,vue}": "eslint --fix"
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue}": "pnpm lint",
+    "*.{ts,tsx,js,vue,scss}": "prettier --write"
   },
   "keywords": [
     "vue3",
@@ -29,7 +30,9 @@
     "@snail-admin/eslint-config": "workspace:*",
     "@types/node": "^20.12.12",
     "eslint": "8.43.0",
+    "eslint-plugin-oxlint": "^0.4.0",
     "nano-staged": "^0.8.0",
+    "oxlint": "^0.4.2",
     "picocolors": "^1.0.1",
     "prettier": "^3.2.5",
     "simple-git-hooks": "^2.11.1",
