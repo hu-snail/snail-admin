@@ -1,10 +1,5 @@
 module.exports = {
-  extends: [
-    'airbnb-base',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-recommended',
-    'prettier',
-  ],
+  extends: ['airbnb-base', 'plugin:@typescript-eslint/recommended', 'plugin:vue/vue3-recommended', 'prettier'],
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
@@ -18,6 +13,7 @@ module.exports = {
     browser: true,
   },
   rules: {
+    'no-restricted-syntax': ['error', 'LabeledStatement', 'WithStatement'],
     'max-classes-per-file': 'off',
     'no-new': 'off',
     'no-shadow': 'off',
@@ -65,4 +61,4 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
   },
-};
+}
