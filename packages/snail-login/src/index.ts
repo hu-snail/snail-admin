@@ -1,2 +1,2 @@
-export * from './basic'
-export * from './vip'
+export * from './template/basic'
+export * from './template/vip'
