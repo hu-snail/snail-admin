@@ -1,8 +1,9 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, type DefaultTheme } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'zh-Hans',
+  head: [['link', { rel: 'icon', href: '/snail-logo.png' }]],
   title: 'Snail-Admin',
   description: 'Snail-Admin开源教程',
   lastUpdated: true,
@@ -32,7 +33,7 @@ export default defineConfig({
             items: [
               {
                 text: '如何搭建文档？',
-                link: '/guide/env',
+                link: '/tutorial/create-docs',
               },
               {
                 text: '工程构建',
@@ -119,6 +120,35 @@ export default defineConfig({
           },
         ],
       },
+      '/tutorial/': {
+        base: '/tutorial/',
+        items: [
+          {
+            text: '如何构建文档？',
+            items: [
+              {
+                text: '默认主题',
+                base: '/zh/reference/default-theme-',
+                items: [
+                  { text: '概览', link: 'config' },
+                  { text: '导航栏', link: 'nav' },
+                  { text: '侧边栏', link: 'sidebar' },
+                  { text: '主页', link: 'home-page' },
+                  { text: '页脚', link: 'footer' },
+                  { text: '布局', link: 'layout' },
+                  { text: '徽章', link: 'badge' },
+                  { text: '团队页', link: 'team-page' },
+                  { text: '上下页链接', link: 'prev-next-links' },
+                  { text: '编辑链接', link: 'edit-link' },
+                  { text: '最后更新时间戳', link: 'last-updated' },
+                  { text: '搜索', link: 'search' },
+                  { text: 'Carbon Ads', link: 'carbon-ads' },
+                ],
+              },
+            ],
+          },
+        ],
+      },
     },
 
     socialLinks: [
@@ -157,6 +187,9 @@ export default defineConfig({
         dateStyle: 'short',
         timeStyle: 'medium',
       },
+    },
+    search: {
+      provider: 'local',
     },
     returnToTopLabel: '回到顶部',
     sidebarMenuLabel: '菜单',
