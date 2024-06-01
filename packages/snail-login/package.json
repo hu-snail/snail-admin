@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "login of snail-admin",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,5 +13,11 @@
     "snail-admin"
   ],
   "author": "hu-snail <1217437592@qq.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@snail-admin/utils": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.27"
+  }
 }
