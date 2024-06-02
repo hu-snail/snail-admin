@@ -9,3 +9,9 @@ import { SnLoginForm, SnRegisterForm } from '../../components'
     <sn-register-form></sn-register-form>
   </div>
 </template>
+
+<style scoped>
+.basic-login-wrap {
+  width: 100vw;
+}
+</style>
