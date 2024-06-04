@@ -1,0 +1,23 @@
+{
+  "name": "@snail-admin/build",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf lib es dist",
+    "build": "pnpm clean && vite build --config  build.config.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "rimraf": "^5.0.7",
+    "vite": "^5.2.12",
+    "vite-plugin-dts": "^3.9.1"
+  },
+  "dependencies": {
+    "gulp": "^5.0.0",
+    "rollup": "^4.18.0"
+  }
+}
