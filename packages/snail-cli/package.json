@@ -11,5 +11,8 @@
     "snail-admin"
   ],
   "author": "hu-snail <1217437592@qq.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "consola": "^3.2.3"
+  }
 }
