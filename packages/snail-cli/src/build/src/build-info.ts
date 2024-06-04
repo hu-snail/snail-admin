@@ -1,5 +1,5 @@
 import { type RollupOptions } from 'rollup'
-import { loginEntry, loginOutputEs, loginOutputCjs, loginDtsRoot, loginDtsEs, loginDtsCjs } from '../../shared/index.js'
+import { loginEntry, loginOutputEs, loginOutputCjs, loginSrc } from '../../shared/index.js'
 
 export interface BuildInfo {
   outDir?: string
@@ -45,6 +45,6 @@ export interface BuildDtsInfo {
 }
 
 export const BuildDtsConfig: BuildDtsInfo = {
-  root: loginDtsRoot,
-  outDir: [loginDtsEs, loginDtsCjs],
+  root: loginSrc,
+  outDir: [loginOutputEs, loginOutputCjs],
 }

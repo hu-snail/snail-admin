@@ -34,13 +34,9 @@ export const docRoot = resolve(projRoot, docsDirName)
 export const vpRoot = resolve(docRoot, '.vitepress')
 
 // build
+export const loginSrc = resolve(loginRoot, './src')
 export const loginEntry = resolve(loginRoot, 'index.ts')
 export const loginOutputCjs = resolve(loginRoot, 'lib')
 export const loginOutputEs = resolve(loginRoot, 'es')
-
-// build dts
-export const loginDtsRoot = resolve(loginRoot, './src')
-export const loginDtsEs = resolve(loginRoot, './es')
-export const loginDtsCjs = resolve(loginRoot, './lib')
 
 export const projPackage = resolve(projRoot, 'package.json')
