@@ -2,22 +2,38 @@
   "name": "@snail-admin/build",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
+    "gulpx:build": "gulp --require @esbuild-kit/cjs-loader",
+    "run": "tsx ./index.ts",
     "clean": "rimraf lib es dist",
-    "build": "pnpm clean && vite build --config  build.config.ts"
+    "build": "pnpm clean && vite build --config build.config.ts"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "hu-snail <1217437592@qq.com>",
+  "license": "MIT",
   "devDependencies": {
+    "@esbuild-kit/cjs-loader": "^2.4.4",
+    "@types/gulp": "^4.0.17",
+    "@types/gulp-autoprefixer": "^0.0.37",
+    "@types/gulp-sass": "^5.0.4",
+    "@types/node": "^20.12.12",
     "@vitejs/plugin-vue": "^5.0.5",
+    "chalk": "^5.3.0",
+    "execa": "^9.1.0",
+    "fs-extra": "^11.2.0",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-typescript": "6.0.0-alpha.1",
+    "nanospinner": "^1.1.0",
     "rimraf": "^5.0.7",
+    "sucrase": "^3.35.0",
+    "tsx": "^4.11.2",
     "vite": "^5.2.12",
     "vite-plugin-dts": "^3.9.1"
   },
   "dependencies": {
-    "gulp": "^5.0.0",
-    "rollup": "^4.18.0"
+    "gulp": "4.0.2",
+    "rollup": "^4.18.0",
+    "typescript": "5.4.5"
   }
 }

@@ -14,7 +14,7 @@ export const buildConfig: BuildInfo = {
   outDir: 'es',
   minify: false,
   rollupOptions: {
-    external: ['vue', '@snail-admin/utils'],
+    external: ['vue', '@snail-admin/utils', /\.scss/],
     input: [loginEntry],
     output: [
       {
