@@ -7,5 +7,15 @@
     "isolatedModules": true,
     "allowJs": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "index.ts", "build.config.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "index.ts",
+    "bin.ts",
+    "build.config.ts",
+    "src/build/index.ts",
+    "src/shared/tsconfig.json",
+    "src/build/gulpfile.ts"
+  ]
 }

@@ -2,6 +2,7 @@
   "name": "@snail-admin/build",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "gulpx:build": "gulp --require @esbuild-kit/cjs-loader",
     "run": "tsx ./index.ts",
