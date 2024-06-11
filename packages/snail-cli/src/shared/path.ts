@@ -1,4 +1,5 @@
 import { resolve } from 'path'
+import { getDirname } from './fs.js'
 import {
   LOGIN_COMP_NAME,
   LAYOUT_COMP_NAME,
@@ -7,14 +8,17 @@ import {
   USE_PLUGIN_NAME,
   VITE_PLUGIN_NAME,
   CLI_PLUGIN_NAME,
-} from './constants'
+} from './constants.js'
 
+export const dirname = getDirname(import.meta.url)
 // 项目根目录
-export const projRoot = resolve(__dirname, '..', '..', '..', '..')
+export const projRoot = resolve(dirname, '..', '..', '..', '..')
 // packages 目录
 export const pkgRoot = resolve(projRoot, 'packages')
 // 登录组件目录
 export const loginRoot = resolve(pkgRoot, LOGIN_COMP_NAME)
+// 登录模版目录
+export const loginTemplateRoot = resolve(projRoot, LOGIN_COMP_NAME, 'src', 'template')
 // 布局组件目录
 export const layoutRoot = resolve(pkgRoot, LAYOUT_COMP_NAME)
 // eslint 插件目录

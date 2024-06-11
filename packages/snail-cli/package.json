@@ -14,7 +14,7 @@
     "tsconfig.json"
   ],
   "scripts": {
-    "build": "rimraf lib && tsc --outDir lib"
+    "build": "rimraf ./lib && tsc"
   },
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
@@ -26,13 +26,29 @@
   "author": "hu-snail <1217437592@qq.com>",
   "license": "MIT",
   "devDependencies": {
+    "@snail-admin/utils": "workspace:*",
     "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^9.0.7",
     "consola": "^3.2.3",
     "fs-extra": "^11.2.0",
     "rimraf": "^5.0.7"
   },
   "dependencies": {
     "commander": "^12.1.0",
+    "ejs": "^3.1.10",
+    "execa": "5.0.0",
+    "inquirer": "^9.2.23",
+    "nanospinner": "^1.1.0",
     "picocolors": "^1.0.1"
+  },
+  "peerDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitest/coverage-istanbul": "^1.6.0",
+    "jsdom": "^24.1.0",
+    "sass": "1.77.4",
+    "vite": "^5.2.12",
+    "vite-plugin-dts": "^3.9.1",
+    "vitest": "^1.6.0",
+    "vue": "^3.4.27"
   }
 }

@@ -1,21 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "jsxImportSource": "vue",
-    "jsx": "preserve",
-    "isolatedModules": true,
-    "allowJs": true
+    "target": "esnext",
+    "outDir": "./lib"
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "index.ts",
-    "bin.ts",
-    "build.config.ts",
-    "src/build/index.ts",
-    "src/shared/tsconfig.json",
-    "src/build/gulpfile.ts"
-  ]
+  "include": ["src/**/*", "src/**/*.ts", "*.ts"]
 }
