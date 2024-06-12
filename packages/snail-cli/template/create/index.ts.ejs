@@ -1,8 +1,7 @@
-import <%- bigCamelizeName %> from './<%- bigCamelizeName %><%- style === 'vue' ? '.vue' : '' %>'
-import { withInstall } from '../utils/components'
+import <%- bigCamelizeName + createType %> from './<%- kebabCaseName %><%- style === 'vue' ? '.vue' : '' %>'
+import { withInstall } from '@snail-admin/utils'
 
-withInstall(<%- bigCamelizeName %>)
 
-export const _<%- bigCamelizeName %>Component = <%- bigCamelizeName %>
+export const <%- bigCamelizeNamespace + bigCamelizeName + createType %> = withInstall(<%- bigCamelizeName + createType %>)
+export default <%- bigCamelizeNamespace + bigCamelizeName + createType %>
 
-export default <%- bigCamelizeName %>

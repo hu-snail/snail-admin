@@ -1,13 +1,13 @@
 import { defineComponent } from 'vue'
 import { props } from './props'
-import './<%- camelizeName %>.less'
+import './<%- camelizeName %>.scss'
 
 export default defineComponent({
-  name: '<%- bigCamelizeNamespace + bigCamelizeName %>',
+  name: '<%- bigCamelizeNamespace + bigCamelizeName + createType %>',
   props,
   setup(props, { slots }) {
     return () => {
-      return <div class="<%- namespace %>-<%- kebabCaseName %>">{ slots.default?.() }</div>
+      return <div class="<%- namespace %>-<%- kebabCaseName %>-<%- type %>">{ slots.default?.() }</div>
     }
   },
 })

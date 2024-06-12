@@ -1,3 +1,4 @@
+import { globSync } from 'glob'
 import { existsSync } from 'fs'
 import fse from 'fs-extra'
 import { mkdir, writeFile } from 'fs/promises'
@@ -17,3 +18,14 @@ export function getDirname(url: string) {
 }
 
 export const isDir = (file: string): boolean => pathExistsSync(file) && lstatSync(file).isDirectory()
+
+export function glob(pattern: string): Promise<string[]> {
+  return new Promise((resolve, reject) => {
+    try {
+      const files = globSync(pattern)
+      resolve(files)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}

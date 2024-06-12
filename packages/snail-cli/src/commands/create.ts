@@ -1,12 +1,13 @@
+import ejs from 'ejs'
 import logger from '../shared/logger.js'
 import { loginTemplateRoot, dirname } from '../shared/path.js'
-
+import { glob } from '../shared/fs.js'
 import { bigCamelize, kebabCase, camelize } from '@snail-admin/utils'
 import { resolve } from 'path'
 import inquirer from 'inquirer'
 import fse from 'fs-extra'
 
-const { pathExistsSync, copySync } = fse
+const { pathExistsSync, copySync, readFileSync, writeFileSync, removeSync } = fse
 const { prompt } = inquirer
 
 type CodingStyle = 'tsx' | 'vue'
@@ -27,6 +28,22 @@ interface RenderData {
   style: CodingStyle
   namespace: string
   bigCamelizeNamespace: string
+  createType: string
+}
+
+async function renderTemplates(componentFolder: string, componentFolderName: string, renderData: RenderData) {
+  const templates = await glob(`${componentFolder}/**/*.ejs`)
+  templates.forEach((template) => {
+    const templateCode = readFileSync(template, { encoding: 'utf-8' })
+    const code = ejs.render(templateCode, renderData)
+    const file = template
+      .replace('[componentName]', camelize(componentFolderName))
+      .replace('[ComponentName]', componentFolderName)
+      .replace('.ejs', '')
+
+    writeFileSync(file, code)
+    removeSync(template)
+  })
 }
 
 export async function create(options: CreateCommandOptions) {
@@ -39,7 +56,19 @@ export async function create(options: CreateCommandOptions) {
     bigCamelizeName: 'ComponentName',
     camelizeName: 'componentName',
     style: 'vue',
+    createType: 'login',
   }
+
+  const { type } = await prompt({
+    name: 'type',
+    type: 'list',
+    message: 'Which create type ?',
+    choices: [
+      { name: 'login', value: 'login' },
+      { name: 'layout', value: 'layout' },
+    ],
+    default: 'login',
+  })
 
   const { name } = options.name
     ? options
@@ -52,8 +81,9 @@ export async function create(options: CreateCommandOptions) {
   const kebabCaseName = kebabCase(name)
   const bigCamelizeName = bigCamelize(name)
   const camelizeName = camelize(name)
+  const createType = bigCamelize(type)
 
-  Object.assign(renderData, { kebabCaseName, bigCamelizeName, camelizeName })
+  Object.assign(renderData, { kebabCaseName, bigCamelizeName, camelizeName, createType, type })
 
   const componentFolder = resolve(loginTemplateRoot, kebabCaseName)
   if (pathExistsSync(componentFolder)) {
@@ -78,4 +108,15 @@ export async function create(options: CreateCommandOptions) {
     renderData.style = style
   }
   copySync(resolve(dirname, '../../../template/create'), componentFolder)
+  await renderTemplates(componentFolder, kebabCaseName, renderData)
+
+  if (renderData.style !== 'vue') {
+    removeSync(resolve(componentFolder, `${renderData.bigCamelizeName}.vue`))
+  }
+
+  if (renderData.style !== 'tsx') {
+    removeSync(resolve(componentFolder, `${renderData.bigCamelizeName}.tsx`))
+  }
+
+  logger.success(`Create ${kebabCaseName} component success!`)
 }

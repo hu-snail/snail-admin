@@ -1,17 +1,13 @@
 <template>
-  <div class="<%- namespace %>-<%- kebabCaseName %>"></div>
+  <div class="<%- namespace %>-<%- kebabCaseName %>-<%- type %>"></div>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue'
-  import { props } from './props'
-
-  export default defineComponent({
-    name: '<%- bigCamelizeNamespace + bigCamelizeName %>',
-    props,
+<script lang="ts" setup>
+  defineOptions({
+    name: '<%- bigCamelizeNamespace %><%- bigCamelizeName %><%- createType %>',
   })
 </script>
 
-<style lang="less">
-  @import './<%- camelizeName %>.less';
+<style lang="scss" scoped>
+  @import './<%- camelizeName %>.scss';
 </style>
