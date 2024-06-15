@@ -1,13 +1,17 @@
 <template>
-  <div class="<%- namespace %>-<%- kebabCaseName %>-<%- type %>"></div>
+  <div class="<%- namespace %>-<%- kebabCaseName %>"></div>
 </template>
 
 <script lang="ts" setup>
+  import { props } from './props'
+
+  defineProps(props)
+
   defineOptions({
     name: '<%- bigCamelizeNamespace %><%- bigCamelizeName %><%- createType %>',
   })
 </script>
 
 <style lang="scss" scoped>
-  @import './<%- camelizeName %>.scss';
+  @import './style/<%- kebabCaseName %>.scss';
 </style>

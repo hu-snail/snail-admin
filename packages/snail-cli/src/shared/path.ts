@@ -21,6 +21,8 @@ export const loginRoot = resolve(pkgRoot, LOGIN_COMP_NAME)
 export const loginTemplateRoot = resolve(projRoot, LOGIN_COMP_NAME, 'src', 'template')
 // 布局组件目录
 export const layoutRoot = resolve(pkgRoot, LAYOUT_COMP_NAME)
+// 布局模板目录
+export const layoutTemplateRoot = resolve(projRoot, LAYOUT_COMP_NAME, 'src')
 // eslint 插件目录
 export const eslintRoot = resolve(projRoot, ESLINT_PLUGIN_NAME)
 // utils 插件目录

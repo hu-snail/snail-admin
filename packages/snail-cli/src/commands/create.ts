@@ -1,6 +1,6 @@
 import ejs from 'ejs'
 import logger from '../shared/logger.js'
-import { loginTemplateRoot, dirname } from '../shared/path.js'
+import { loginTemplateRoot, layoutTemplateRoot, dirname } from '../shared/path.js'
 import { glob } from '../shared/fs.js'
 import { bigCamelize, kebabCase, camelize } from '@snail-admin/utils'
 import { resolve } from 'path'
@@ -31,13 +31,19 @@ interface RenderData {
   createType: string
 }
 
-async function renderTemplates(componentFolder: string, componentFolderName: string, renderData: RenderData) {
+async function renderTemplates(
+  type: string,
+  componentFolder: string,
+  componentFolderName: string,
+  renderData: RenderData,
+) {
   const templates = await glob(`${componentFolder}/**/*.ejs`)
+  if (type !== 'login') renderData.createType = ''
   templates.forEach((template) => {
     const templateCode = readFileSync(template, { encoding: 'utf-8' })
     const code = ejs.render(templateCode, renderData)
     const file = template
-      .replace('[componentName]', camelize(componentFolderName))
+      .replace('[componentName]', componentFolderName)
       .replace('[ComponentName]', componentFolderName)
       .replace('.ejs', '')
 
@@ -84,8 +90,18 @@ export async function create(options: CreateCommandOptions) {
   const createType = bigCamelize(type)
 
   Object.assign(renderData, { kebabCaseName, bigCamelizeName, camelizeName, createType, type })
+  let componentFolder = ''
+  switch (type) {
+    case 'login':
+      componentFolder = resolve(loginTemplateRoot, kebabCaseName)
+      break
+    case 'layout':
+      componentFolder = resolve(layoutTemplateRoot, kebabCaseName)
+      break
+    default:
+      break
+  }
 
-  const componentFolder = resolve(loginTemplateRoot, kebabCaseName)
   if (pathExistsSync(componentFolder)) {
     logger.warning(`${kebabCaseName} already exist and cannot be recreated...`)
     return
@@ -108,14 +124,13 @@ export async function create(options: CreateCommandOptions) {
     renderData.style = style
   }
   copySync(resolve(dirname, '../../../template/create'), componentFolder)
-  await renderTemplates(componentFolder, kebabCaseName, renderData)
-
+  await renderTemplates(type, componentFolder, kebabCaseName, renderData)
   if (renderData.style !== 'vue') {
-    removeSync(resolve(componentFolder, `${renderData.bigCamelizeName}.vue`))
+    removeSync(resolve(componentFolder, `${renderData.kebabCaseName}.vue`))
   }
 
   if (renderData.style !== 'tsx') {
-    removeSync(resolve(componentFolder, `${renderData.bigCamelizeName}.tsx`))
+    removeSync(resolve(componentFolder, `${renderData.kebabCaseName}.tsx`))
   }
 
   logger.success(`Create ${kebabCaseName} component success!`)

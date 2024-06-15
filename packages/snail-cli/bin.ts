@@ -9,12 +9,30 @@ const program = new Command()
 program.version(`snail-cli ${version}`).usage('<command> [options]')
 
 program
+  .command('build')
+  .description('Build snail-admin form production')
+  .action(async (options) => {
+    const { build } = await import('./src/commands/build.js')
+
+    return build(options)
+  })
+
+program
   .command('lint')
   .description('Lint code')
   .action(async () => {
     const { lint } = await import('./src/commands/lint.js')
 
     return lint()
+  })
+
+program
+  .command('create:pck')
+  .description('Create a package directory')
+  .option('-n, --name <componentName>', 'Component name')
+  .action(async (options) => {
+    const { createPackage } = await import('./src/commands/package.js')
+    return createPackage(options)
   })
 
 program
