@@ -39,7 +39,7 @@ export const docsDirName = 'docs'
 export const docRoot = resolve(projRoot, docsDirName)
 export const vpRoot = resolve(docRoot, '.vitepress')
 
-// build
+// login build
 export const loginSrc = resolve(loginRoot, './src')
 export const loginEntry = resolve(loginRoot, 'index.ts')
 export const loginOutputCjs = resolve(loginRoot, 'lib')

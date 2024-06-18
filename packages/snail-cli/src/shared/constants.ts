@@ -1,6 +1,7 @@
 export const CWD = process.cwd()
 
 export const SN_PREFIX = 'sn'
+export const SN_ALL_PREFIX = 'snail'
 export const LOGIN_COMP_NAME = 'snail-login'
 export const LAYOUT_COMP_NAME = 'snail-layout'
 export const ESLINT_PLUGIN_NAME = 'snail-eslint-config'

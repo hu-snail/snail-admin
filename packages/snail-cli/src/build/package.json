@@ -4,7 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "gulpx:build": "gulp --require @esbuild-kit/cjs-loader",
+    "build:login": "COMP_NAME=snail-login gulp --require @esbuild-kit/cjs-loader",
     "run": "tsx ./index.ts",
     "clean": "rimraf lib es dist",
     "build": "pnpm clean && vite build --config build.config.ts"

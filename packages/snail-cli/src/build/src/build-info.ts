@@ -1,5 +1,5 @@
 import { type RollupOptions } from 'rollup'
-import { loginEntry, loginOutputEs, loginOutputCjs, loginSrc } from '../../shared/index.js'
+import { pkgRoot } from '../../shared/path.js'
 
 export interface BuildInfo {
   outDir?: string
@@ -9,32 +9,37 @@ export interface BuildInfo {
     entry: string
   }
 }
+const prefix = `/${pkgRoot}/${process.env.COMP_NAME}`
+const ENTRY_PATH = `${prefix}/index.ts`
+const ES_PATH = `${prefix}/es`
+const CJS_PATH = `${prefix}/lib`
+const SRC = `${prefix}/src`
 
 export const buildConfig: BuildInfo = {
   outDir: 'es',
   minify: false,
   rollupOptions: {
     external: ['vue', '@snail-admin/utils', /\.scss/],
-    input: [loginEntry],
+    input: [ENTRY_PATH],
     output: [
       {
         format: 'es',
         entryFileNames: '[name].mjs',
         preserveModules: true,
         exports: 'named',
-        dir: loginOutputEs,
+        dir: ES_PATH,
       },
       {
         format: 'cjs',
         entryFileNames: '[name].js',
         preserveModules: true,
         exports: 'named',
-        dir: loginOutputCjs,
+        dir: CJS_PATH,
       },
     ],
   },
   lib: {
-    entry: loginEntry,
+    entry: ENTRY_PATH,
   },
 }
 
@@ -45,6 +50,6 @@ export interface BuildDtsInfo {
 }
 
 export const BuildDtsConfig: BuildDtsInfo = {
-  root: loginSrc,
-  outDir: [loginOutputEs, loginOutputCjs],
+  root: SRC,
+  outDir: [ES_PATH, CJS_PATH],
 }

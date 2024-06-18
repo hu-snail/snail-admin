@@ -1,10 +1,10 @@
 import { src, series, parallel, dest } from 'gulp'
 import { Transform } from 'stream'
-import { loginRoot } from '../shared/path'
+import { pkgRoot } from '../shared/path.js'
 import autoprefixer from 'gulp-autoprefixer'
 import cssnano from 'cssnano'
 import postcss from 'postcss'
-import { run } from './src/utils/run'
+import { run } from './src/utils/run.js'
 import { resolve, basename } from 'path'
 import chalk from 'chalk'
 import consola from 'consola'
@@ -54,13 +54,15 @@ function compressWithCssnano() {
   })
 }
 
+const ROOT_PATH = `/${pkgRoot}/${process.env.COMP_NAME}`
+
 export const buildStyle = () =>
-  src(`${loginRoot}/src/**/**/style/**.scss`)
+  src(`${ROOT_PATH}/src/**/**/style/**.scss`)
     .pipe(sass())
     .pipe(autoprefixer({ cascade: false }))
     .pipe(compressWithCssnano())
-    .pipe(dest(`${loginRoot}/lib/src`))
-    .pipe(dest(`${loginRoot}/es/src`))
+    .pipe(dest(`${ROOT_PATH}/lib/src`))
+    .pipe(dest(`${ROOT_PATH}/es/src`))
 
 export const buildComponent = async () => {
   await run('pnpm build', buildPath)
