@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import './style/login-form.scss'
+
 defineOptions({
   name: 'SnLoginForm',
 })

@@ -1,5 +1,9 @@
 <script lang="ts" setup>
 import { SnLoginForm, SnRegisterForm } from '../../components'
+
+defineOptions({
+  name: 'SnVipLogin',
+})
 </script>
 
 <template>

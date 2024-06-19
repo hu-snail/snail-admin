@@ -2,11 +2,56 @@
   "name": "@snail-admin/login",
   "version": "1.0.0",
   "description": "login of snail-admin",
-  "main": "index.js",
-  "type": "module",
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "types": "es/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs",
+      "require": "./lib/index.js"
+    },
+    "./global": {
+      "types": "./global.d.ts"
+    },
+    "./es": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs"
+    },
+    "./lib": {
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.js"
+    },
+    "./es/*.mjs": {
+      "types": "./es/*.d.ts",
+      "import": "./es/*.mjs"
+    },
+    "./es/*": {
+      "types": [
+        "./es/*.d.ts",
+        "./es/*/index.d.ts"
+      ],
+      "import": "./es/*.mjs"
+    },
+    "./lib/*.js": {
+      "types": "./lib/*.d.ts",
+      "require": "./lib/*.js"
+    },
+    "./lib/*": {
+      "types": [
+        "./lib/*.d.ts",
+        "./lib/*/index.d.ts"
+      ],
+      "require": "./lib/*.js"
+    },
+    "./*": "./*"
+  },
+  "style": "dist/index.css",
+  "sideEffects": [
+    "dist/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "vite build"
+    "build": "snail-cli build"
   },
   "keywords": [
     "login-template",
@@ -19,11 +64,19 @@
     "@snail-admin/utils": "workspace:*"
   },
   "peerDependencies": {
+    "sass": "1.77.4",
     "vue": "^3.4.27"
   },
   "devDependencies": {
+    "@snail-admin/cli": "workspace:*",
     "@vitejs/plugin-vue": "^5.0.5",
+    "@vitest/coverage-istanbul": "^1.6.0",
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^24.1.0",
+    "sass": "1.77.4",
     "vite": "^5.2.12",
-    "vite-plugin-dts": "^3.9.1"
+    "vite-plugin-dts": "^3.9.1",
+    "vitest": "^1.6.0",
+    "vue": "^3.4.27"
   }
 }

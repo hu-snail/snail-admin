@@ -1,2 +1,7 @@
-export * from './src/template/basic'
-export * from './src/template/vip'
+import installer from './defaults'
+
+export * from './src/template'
+
+export const { install, version } = installer
+
+export default installer

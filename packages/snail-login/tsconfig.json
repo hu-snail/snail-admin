@@ -5,8 +5,16 @@
     "jsxImportSource": "vue",
     "jsx": "preserve",
     "isolatedModules": true,
-    "allowJs": true,
-    "types": ["vitest/globals"]
+    "allowJs": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "index.ts", "index.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "component.ts",
+    "index.ts",
+    "defaults.ts",
+    "make-installer.ts",
+    "vite.config.ts"
+  ]
 }
