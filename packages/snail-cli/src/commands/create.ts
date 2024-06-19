@@ -31,7 +31,7 @@ interface RenderData {
   createType: string
 }
 
-async function renderTemplates(
+export async function renderTemplates(
   type: string,
   componentFolder: string,
   componentFolderName: string,

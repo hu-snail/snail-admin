@@ -8,7 +8,9 @@ import { run } from './src/utils/run.js'
 import { resolve, basename } from 'path'
 import chalk from 'chalk'
 import consola from 'consola'
+import fse from 'fs-extra'
 
+const { removeSync } = fse
 const sass = require('gulp-sass')(require('sass'))
 
 const buildPath = resolve(__dirname, '.')
@@ -56,6 +58,10 @@ function compressWithCssnano() {
 
 const ROOT_PATH = `/${pkgRoot}/${process.env.COMP_NAME}`
 
+const reomveFile = async () => {
+  await removeSync(`${ROOT_PATH}/lib`)
+  await removeSync(`${ROOT_PATH}/es`)
+}
 export const buildStyle = () =>
   src(`${ROOT_PATH}/src/**/**/style/**.scss`)
     .pipe(sass())
@@ -65,6 +71,7 @@ export const buildStyle = () =>
     .pipe(dest(`${ROOT_PATH}/es/src`))
 
 export const buildComponent = async () => {
+  await reomveFile()
   await run('pnpm build', buildPath)
 }
 

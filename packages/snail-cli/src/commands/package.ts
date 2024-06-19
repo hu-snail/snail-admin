@@ -6,6 +6,7 @@ import { kebabCase } from '@snail-admin/utils'
 import { resolve } from 'path'
 import inquirer from 'inquirer'
 import fse from 'fs-extra'
+import { renderTemplates as renderTemp } from './create.js'
 
 const { pathExistsSync, copySync, readFileSync, writeFileSync, removeSync } = fse
 const { prompt } = inquirer
@@ -89,7 +90,6 @@ export async function createPackage(options: PackageCommandOptions) {
 
   copySync(resolve(dirname, '../../../template/package'), componentFolder)
   await renderTemplates(componentFolder, kebabCaseName, renderData)
-
   removeSync(resolve(componentFolder, 'comp_package'))
   removeSync(resolve(componentFolder, 'plugin_package'))
 

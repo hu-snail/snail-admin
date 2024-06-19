@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "build:login": "COMP_NAME=snail-login gulp --require @esbuild-kit/cjs-loader",
+    "build:login-full": "COMP_NAME=snail-login vite build --config build.full.config.ts",
     "run": "tsx ./index.ts",
     "clean": "rimraf lib es dist",
-    "build": "pnpm clean && vite build --config build.config.ts"
+    "build": "COMP_NAME=snail-login pnpm clean && vite build --config build.config.ts"
   },
   "keywords": [],
   "author": "hu-snail <1217437592@qq.com>",
@@ -19,6 +20,7 @@
     "@types/gulp-sass": "^5.0.4",
     "@types/node": "^20.12.12",
     "@vitejs/plugin-vue": "^5.0.5",
+    "autoprefixer": "^10.4.19",
     "chalk": "^5.3.0",
     "cssnano": "^7.0.2",
     "execa": "^9.1.0",
@@ -27,8 +29,13 @@
     "gulp-sass": "^5.1.0",
     "gulp-typescript": "6.0.0-alpha.1",
     "nanospinner": "^1.1.0",
+    "node-sass": "^9.0.0",
     "postcss": "^8.4.38",
     "rimraf": "^5.0.7",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-scss": "^4.0.0",
+    "rollup-plugin-terser": "^7.0.2",
     "sucrase": "^3.35.0",
     "tsx": "^4.11.2",
     "vite": "^5.2.12",

@@ -29,3 +29,7 @@ export function glob(pattern: string): Promise<string[]> {
     }
   })
 }
+
+export function formatBundleFilename(name: string, minify: boolean, ext: string) {
+  return `${name}${minify ? '.min' : ''}.${ext}`
+}
