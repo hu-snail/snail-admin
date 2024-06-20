@@ -14,10 +14,11 @@ export default defineConfig({
         const keys = Object.keys(bundle)
         for (const key of keys) {
           const bundler: any = bundle[key as any]
+          console.log(bundler, '==')
           this.emitFile({
             type: 'asset',
             fileName: key,
-            source: bundler.code.replace(/\.scss/g, '.css'),
+            source: bundler.code ? bundler.code.replace(/\.scss/g, '.css') : bundler.source,
           })
         }
       },

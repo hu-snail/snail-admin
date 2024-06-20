@@ -7,7 +7,7 @@ export const buildConfig: any = {
   outDir: 'es',
   sourcemap: true,
   rollupOptions: {
-    external: ['vue', '@snail-admin/utils', /style\.scss/],
+    external: ['vue', '@snail-admin/utils'],
     input: [ENTRY_PATH],
     output: {
       globals: {

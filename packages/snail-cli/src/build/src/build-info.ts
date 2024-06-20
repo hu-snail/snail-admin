@@ -4,6 +4,7 @@ import { pkgRoot } from '../../shared/path.js'
 export interface BuildInfo {
   outDir?: string
   minify: boolean
+  sourcemap: boolean
   rollupOptions: RollupOptions
   lib: {
     entry: string
@@ -18,6 +19,7 @@ const SRC = `${prefix}/src`
 export const buildConfig: BuildInfo = {
   outDir: 'es',
   minify: false,
+  sourcemap: true,
   rollupOptions: {
     external: ['vue', '@snail-admin/utils', /\.scss/],
     input: [ENTRY_PATH],

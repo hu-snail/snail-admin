@@ -4,11 +4,11 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "build:login": "COMP_NAME=snail-login gulp --require @esbuild-kit/cjs-loader",
+    "build:login": "COMP_NAME=snail-login gulp --require @esbuild-kit/cjs-loader && pnpm build:login-full",
     "build:login-full": "COMP_NAME=snail-login vite build --config build.full.config.ts",
     "run": "tsx ./index.ts",
     "clean": "rimraf lib es dist",
-    "build": "COMP_NAME=snail-login pnpm clean && vite build --config build.config.ts"
+    "build": "COMP_NAME=snail-login vite build --config build.config.ts"
   },
   "keywords": [],
   "author": "hu-snail <1217437592@qq.com>",
