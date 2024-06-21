@@ -4,16 +4,16 @@ import { pkgRoot } from '../shared/path.js'
 import autoprefixer from 'gulp-autoprefixer'
 import cssnano from 'cssnano'
 import postcss from 'postcss'
-import { run } from './src/utils/run.js'
 import { resolve, basename } from 'path'
 import chalk from 'chalk'
 import consola from 'consola'
 import fse from 'fs-extra'
+import { build as buildVite } from 'vite'
+import { buildFullConfig } from './build.full.config'
+import buildConfig from './build.config'
 
 const { removeSync } = fse
 const sass = require('gulp-sass')(require('sass'))
-
-const buildPath = resolve(__dirname, '.')
 
 function compressWithCssnano() {
   const processor = postcss([
@@ -61,6 +61,7 @@ const ROOT_PATH = `/${pkgRoot}/${process.env.COMP_NAME}`
 const reomveFile = async () => {
   await removeSync(`${ROOT_PATH}/lib`)
   await removeSync(`${ROOT_PATH}/es`)
+  await removeSync(`${ROOT_PATH}/dist`)
 }
 export const buildStyle = () =>
   src(`${ROOT_PATH}/src/**/**/style/**.scss`)
@@ -72,7 +73,9 @@ export const buildStyle = () =>
 
 export const buildComponent = async () => {
   await reomveFile()
-  await run('pnpm build', buildPath)
+  await buildVite(buildConfig)
+  await buildVite(buildFullConfig(true))
+  await buildVite(buildFullConfig(false))
 }
 
 const runTask: any = series(

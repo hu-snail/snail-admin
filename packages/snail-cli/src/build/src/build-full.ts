@@ -3,24 +3,34 @@ import { pkgRoot } from '../../shared/path.js'
 const prefix = `/${pkgRoot}/snail-login`
 const ENTRY_PATH = `${prefix}/index.ts`
 const DIST_DIR = `${prefix}/dist`
-export const buildConfig: any = {
+
+export const buildFull = (minify: boolean): any => ({
   outDir: 'es',
-  sourcemap: true,
+  minify,
+  sourcemap: minify,
   rollupOptions: {
     external: ['vue', '@snail-admin/utils'],
     input: [ENTRY_PATH],
-    output: {
-      globals: {
-        vue: 'Vue',
-        utils: 'utils',
+    output: [
+      {
+        format: 'es',
+        entryFileNames: `[name].full${minify ? '.min' : ''}.mjs`,
+        exports: 'named',
+        dir: DIST_DIR,
       },
-      dir: DIST_DIR,
-    },
+      {
+        format: 'cjs',
+        entryFileNames: `[name].full${minify ? '.min' : ''}.js`,
+        exports: 'named',
+        dir: DIST_DIR,
+        globals: {
+          vue: 'Vue',
+        },
+      },
+    ],
   },
   lib: {
     entry: ENTRY_PATH,
     name: 'snail-login',
-    fileName: 'index.full',
-    formats: ['es', 'umd', 'cjs'],
   },
-}
+})
